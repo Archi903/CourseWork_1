@@ -2,10 +2,10 @@ package BookOfEmpleyers;
 
 public class Employee {
 
-    public int department;
-    public int salary;
-    public String name;
-    public int id;
+    private int department;
+    private int salary;
+    private String name;
+    private int id;
 
     private static int counter = 1;
 
@@ -20,7 +20,7 @@ public class Employee {
     }
 
 
-    public int getId() {
+    private int getId() {
         return this.id;
     }
     public String getName() {

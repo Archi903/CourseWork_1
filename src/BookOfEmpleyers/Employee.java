@@ -3,7 +3,7 @@ package BookOfEmpleyers;
 public class Employee {
 
     private int department;
-    private int salary;
+    private double salary;
     private String name;
     private int id;
 
@@ -11,7 +11,7 @@ public class Employee {
 
 
 
-    public Employee(String name, int department, int salary) {
+    public Employee(String name, int department, double salary) {
         this.name = name;
         this.department = department;
         this.salary = salary;
@@ -31,14 +31,14 @@ public class Employee {
         return this.department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return this.salary;
     }
 
     public void setDepartment(int department) {
         this.department = department;
     }
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
     @Override

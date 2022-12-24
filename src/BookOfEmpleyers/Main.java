@@ -5,13 +5,12 @@ import java.util.Arrays;
 public class Main {
 
 
-
     public static void main(String[] args) {
         CourseWork1();
         CourseWork2();
     }
-    public static void CourseWork1() {
 
+    public static void CourseWork1() {
         Employee[] employee = new Employee[10];
         employee[0] = new Employee(" Иванов Иван Иванович", 1, 70000);
         employee[1] = new Employee(" Петров Илья Григорьевич", 3, 45000);
@@ -23,7 +22,6 @@ public class Main {
         employee[7] = new Employee(" Кочетов Давид Андреевич", 5, 55000);
         employee[8] = new Employee(" Кузнецов Фёдор Алексеевич", 1, 72000);
         employee[9] = new Employee(" Борисов Даниил Иванович", 2, 39000);
-
 
         employee[2].setDepartment(2);   // Поменять департамент
         employee[2].setSalary(47000);   // Поменять зарплату
@@ -79,7 +77,8 @@ public class Main {
             System.out.println("ФИО: " + employeeName);
         }
 
-        }
+    }
+
     public static void CourseWork2() {
 
 
@@ -104,7 +103,7 @@ public class Main {
         for (Employee value : employee) {
             growSalary = value.getSalary() + (value.getSalary() * setGrowSalary);
             value.setSalary(growSalary);
-            System.out.println("Для сотрудника: " + value.getName() + ", зарплата прошла индексацию: " + value.getSalary());
+            System.out.println("Для сотрудника: " + value.getName() + ", из отдела: " + value.getDepartment() + ", зарплата прошла индексацию: " + value.getSalary());
         }
 
 
@@ -140,6 +139,26 @@ public class Main {
 
         System.out.print("**********************************************************************************");
         System.out.println("");
+
+        double sumMonth = 0;
+        int setDepartmentSum = 4;
+        for (Employee value : employee) {
+            if (setDepartmentSum == value.getDepartment()) {
+                sumMonth = sumMonth + value.getSalary();
+            }
+        }
+        System.out.println(sumMonth);
+
+        double employersSum = 0;
+        int setDepartmentAverage = 4;
+        double averageSum;
+        for (int i = 0; i < employee.length; i++) {
+            if (setDepartmentAverage == employee[i].getDepartment()) {
+                employersSum = employersSum + employee[i].getSalary();
+                averageSum = employersSum / 2;
+            }
+        }
+        System.out.println(averageSum);
     }
 }
 

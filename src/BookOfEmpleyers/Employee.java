@@ -4,11 +4,10 @@ public class Employee {
 
     private int department;
     private double salary;
-    private String name;
-    private int id;
+    private final String name;
+    private final int id;
 
     private static int counter = 1;
-
 
 
     public Employee(String name, int department, double salary) {
@@ -20,9 +19,6 @@ public class Employee {
     }
 
 
-    private int getId() {
-        return this.id;
-    }
     public String getName() {
         return this.name;
     }
@@ -38,14 +34,17 @@ public class Employee {
     public void setDepartment(int department) {
         this.department = department;
     }
+
     public void setSalary(double salary) {
         this.salary = salary;
     }
+
     @Override
     public String toString() {
         return "ID: " + id + ", ФИО:" + name + ", департамент: " + department + ", зарплата: " + salary;
     }
 
 }
+
 
 

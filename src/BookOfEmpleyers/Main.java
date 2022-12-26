@@ -1,18 +1,18 @@
 package BookOfEmpleyers;
 
 public class Main {
-    private static final Employee[] employee = {
+    public static final Employee[] employee = {
 
-            new Employee(" Иванов Иван Иванович", 1, 70000),
-            new Employee(" Петров Илья Григорьевич", 3, 45000),
-            new Employee(" Курчатов Василий Игоревич", 4, 61000),
-            new Employee(" Киселева Марианна Михайловна", 5, 33000),
-            new Employee(" Коновалова Злата Ивановна", 2, 76000),
-            new Employee(" Лобанов Дмитрий Александрович", 4, 65000),
-            new Employee(" Матвеев Роман Ильич", 3, 94000),
-            new Employee(" Кочетов Давид Андреевич", 5, 55000),
-            new Employee(" Кузнецов Фёдор Алексеевич", 1, 72000),
-            new Employee(" Борисов Даниил Иванович", 2, 39000)
+            new Employee("Иванов Иван Иванович", 1, 70000),
+            new Employee("Петров Илья Григорьевич", 3, 45000),
+            new Employee("Курчатов Василий Игоревич", 4, 61000),
+            new Employee("Киселева Марианна Михайловна", 5, 33000),
+            new Employee("Коновалова Злата Ивановна", 2, 76000),
+            new Employee("Лобанов Дмитрий Александрович", 4, 65000),
+            new Employee("Матвеев Роман Ильич", 3, 94000),
+            new Employee("Кочетов Давид Андреевич", 5, 55000),
+            new Employee("Кузнецов Фёдор Алексеевич", 1, 72000),
+            new Employee("Борисов Даниил Иванович", 2, 39000)
     };
 
     public static void printEmployers() {
@@ -21,9 +21,16 @@ public class Main {
         }
     }
 
-    public static void settingsDepartmentSalary() {
-        employee[2].setDepartment(4);   // Поменять департамент
-        employee[2].setSalary(47000);   // Поменять зарплату
+    public static void settingsDepartment(int chooseEmployeeDepartment, int changeDepartment) {
+        chooseEmployeeDepartment = chooseEmployeeDepartment - 1;
+        employee[chooseEmployeeDepartment].setDepartment(changeDepartment);   // Поменять департамент
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
+    }
+
+    public static void settingsSalary(int chooseEmployeeSalary, int changeSalary) {
+        chooseEmployeeSalary = chooseEmployeeSalary - 1;
+        employee[chooseEmployeeSalary].setSalary(changeSalary);   // Поменять зарплату
         System.out.print("**********************************************************************************");
         System.out.println(" ");
     }
@@ -33,13 +40,11 @@ public class Main {
         for (Employee current : employee) {
             sumMonth = sumMonth + current.getSalary();
         }
-        System.out.println("Сумма затрат на зарплаты составила " + sumMonth);
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+
         return sumMonth;
     }
 
-    public static void calculateMinSalary() {
+    public static String calculateMinSalary() {
 
         String minEmployee = null;
         double minSum = employee[0].getSalary();
@@ -49,12 +54,10 @@ public class Main {
                 minSum = value.getSalary();
             }
         }
-        System.out.println("Минимальная зарплата у сотрудника:" + minEmployee + ", зарплата: " + minSum + " рублей");
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return minEmployee;
     }
 
-    public static void calculateMaxSalary() {
+    public static String calculateMaxSalary() {
 
         String maxEmployee = null;
         double maxSum = employee[0].getSalary();
@@ -64,18 +67,12 @@ public class Main {
                 maxEmployee = value.getName();
             }
         }
-        System.out.println("Максимальная зарплата у сотрудника:" + maxEmployee + ", зарплата: " + maxSum + " рублей");
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return maxEmployee;
     }
 
-    public static void calculateAverageSalary() {
+    public static double calculateAverageSalary() {
 
-        double averageMonth = calculateMonthAllSalary() / employee.length;
-        System.out.println(averageMonth);
-
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return calculateMonthAllSalary() / employee.length;
     }
 
     public static void fullName() {
@@ -88,8 +85,7 @@ public class Main {
         System.out.println(" ");
     }
 
-    public static void growSalary() {
-        double percent = 5;
+    public static void growSalary(double percent) {
         double growSalary;
         for (Employee value : employee) {
             growSalary = value.getSalary() + (value.getSalary() * percent / 100);
@@ -100,10 +96,10 @@ public class Main {
         System.out.println(" ");
     }
 
-    public static void minEmployeeDepartment(int department) {
+    public static String minEmployeeDepartment(int department) {
 
         String minEmployee = null;
-        double minSum = 3000000;
+        double minSum = employee[0].getSalary();
         for (Employee value : employee) {
             if (minSum >= value.getSalary() && department == value.getDepartment()) {
                 minEmployee = value.getName();
@@ -111,14 +107,12 @@ public class Main {
                 department = value.getDepartment();
             }
         }
-        System.out.println("Минимальная зарплата у сотрудника:" + minEmployee + ", департамент: " + department + ", зарплата: " + minSum + " рублей");
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return minEmployee;
     }
 
-    public static void maxEmployeeDepartment(int department) {
+    public static String maxEmployeeDepartment(int department) {
         String maxEmployee = null;
-        double maxSum = 0;
+        double maxSum = employee[0].getSalary();
         for (Employee value : employee) {
             if (maxSum < value.getSalary() && department == value.getDepartment()) {
                 maxEmployee = value.getName();
@@ -126,24 +120,20 @@ public class Main {
                 department = value.getDepartment();
             }
         }
-        System.out.println("Максимальная зарплата у сотрудника:" + maxEmployee + ", департамент: " + department + ", зарплата: " + maxSum + " рублей");
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return maxEmployee;
     }
 
-    public static void totalSalaryMonth(int department) {
+    public static double totalSalaryMonth(int department) {
         double sumMonth = 0;
         for (Employee value : employee) {
             if (department == value.getDepartment()) {
                 sumMonth = sumMonth + value.getSalary();
             }
         }
-        System.out.println("Сумму затрат на зарплату по отделу №"+ department + ": " + sumMonth);
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return sumMonth;
     }
 
-    public static void averageSalaryDepartment(int department) {
+    public static double averageSalaryDepartment(int department) {
 
         double employersSum = 0;
         int countEmployee = 0;
@@ -153,11 +143,9 @@ public class Main {
                 employersSum = employersSum + value.getSalary();
             }
         }
-        double averageSalary = employersSum / countEmployee;
-        System.out.println("Средняя зарплату по отделу №"+ department + ": " + averageSalary);
-        System.out.print("**********************************************************************************");
-        System.out.println(" ");
+        return employersSum / countEmployee;
     }
+
     public static void selectGrowSalary(double percent) {
         double growSalary;
         for (Employee value : employee) {
@@ -180,7 +168,8 @@ public class Main {
             }
         }
     }
-    public static void salaryLow(int printSalary){
+
+    public static void salaryLow(int printSalary) {
         for (Employee value : employee) {
             if (printSalary > value.getSalary()) {
                 System.out.println(value);
@@ -189,7 +178,8 @@ public class Main {
         System.out.print("**********************************************************************************");
         System.out.println(" ");
     }
-    public static void salaryHigh(int printSalary){
+
+    public static void salaryHigh(int printSalary) {
         for (Employee value : employee) {
             if (printSalary <= value.getSalary()) {
                 System.out.println(value);
@@ -198,20 +188,36 @@ public class Main {
         System.out.print("**********************************************************************************");
         System.out.println(" ");
     }
+
     public static void main(String[] args) {
         printEmployers();
-        settingsDepartmentSalary();
-        calculateMonthAllSalary();
-        calculateMinSalary();
-        calculateMaxSalary();
-        calculateAverageSalary();
+        int chooseEmployeeDepartment = 2;
+        int changeDepartment = 3;
+        settingsDepartment(chooseEmployeeDepartment, changeDepartment);
+        int chooseEmployeeSalary = 3;
+        int changeSalary = 60000;
+        settingsSalary(chooseEmployeeSalary, changeSalary);
+        System.out.println("Сумма затрат на зарплаты составила " + calculateMonthAllSalary());
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
+        System.out.println("Минимальная зарплата у сотрудника:" + calculateMinSalary());
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
+        System.out.println("Максимальная зарплата у сотрудника:" + calculateMaxSalary());
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
+        System.out.println("Среднее значение по ЗП: " + calculateAverageSalary());
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
         fullName();
-        growSalary();
+        growSalary(5);
         int department = 2;
-        minEmployeeDepartment(department);
-        maxEmployeeDepartment(department);
-        totalSalaryMonth(department);
-        averageSalaryDepartment(department);
+        System.out.println(minEmployeeDepartment(department));
+        System.out.println(maxEmployeeDepartment(department));
+        System.out.println(totalSalaryMonth(department));
+        System.out.println(averageSalaryDepartment(department));
+        System.out.print("**********************************************************************************");
+        System.out.println(" ");
         double percent = 20;
         selectGrowSalary(percent);
         printNameAndSalary(department);

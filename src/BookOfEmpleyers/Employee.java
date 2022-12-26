@@ -27,6 +27,10 @@ public class Employee {
         return this.department;
     }
 
+    public int getID() {
+        return this.id;
+    }
+
     public double getSalary() {
         return this.salary;
     }

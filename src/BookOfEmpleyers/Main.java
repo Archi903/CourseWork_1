@@ -207,19 +207,16 @@ public class Main {
         System.out.println(" ");
         fullName();
         growSalary(5);
-        int department = 2;
-        System.out.println(minEmployeeDepartment(department));
-        System.out.println(maxEmployeeDepartment(department));
-        System.out.println(totalSalaryMonth(department));
-        System.out.println(averageSalaryDepartment(department));
+        System.out.println(minEmployeeDepartment(1));
+        System.out.println(maxEmployeeDepartment(2));
+        System.out.println(totalSalaryMonth(2));
+        System.out.println(averageSalaryDepartment(3));
         System.out.print("**********************************************************************************");
         System.out.println(" ");
-        double percent = 20;
-        selectGrowSalary(percent);
-        printNameAndSalary(department);
-        int printSalary = 60000;
-        salaryLow(printSalary);
-        salaryHigh(printSalary);
+        selectGrowSalary(20);
+        printNameAndSalary(4);
+        salaryLow(60000);
+        salaryHigh(60000);
 
     }
 

@@ -11,11 +11,10 @@ public class Employee {
 
 
     public Employee(String name, int department, double salary) {
+        this.id = counter ++;
         this.name = name;
         this.department = department;
         this.salary = salary;
-        this.id = counter;
-        counter += 1;
     }
 
 
@@ -27,9 +26,6 @@ public class Employee {
         return this.department;
     }
 
-    public int getID() {
-        return this.id;
-    }
 
     public double getSalary() {
         return this.salary;

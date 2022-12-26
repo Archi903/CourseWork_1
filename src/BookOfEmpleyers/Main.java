@@ -191,12 +191,8 @@ public class Main {
 
     public static void main(String[] args) {
         printEmployers();
-        int chooseEmployeeDepartment = 2;
-        int changeDepartment = 3;
-        settingsDepartment(chooseEmployeeDepartment, changeDepartment);
-        int chooseEmployeeSalary = 3;
-        int changeSalary = 60000;
-        settingsSalary(chooseEmployeeSalary, changeSalary);
+        settingsDepartment(2, 3);
+        settingsSalary(3, 60000);
         System.out.println("Сумма затрат на зарплаты составила " + calculateMonthAllSalary());
         System.out.print("**********************************************************************************");
         System.out.println(" ");
